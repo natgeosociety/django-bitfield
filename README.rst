@@ -1,17 +1,22 @@
 django-bitfield
 ---------------
 
-.. image:: https://api.travis-ci.org/disqus/django-bitfield.png?branch=master
-    :target: https://travis-ci.org/disqus/django-bitfield
-
 Provides a BitField like class (using a BigIntegerField) for your Django models.
 
 (If you're upgrading from a version before 1.2 the API has changed greatly and is backwards incompatible!)
 
+Why did we Fork?
+================
+
+We needed the ``get_set_bits()`` due to its usage throughout several other packages.
+It was easier to fork this one package and add it back in than change all the other
+packages.
+
+
 Requirements
 ============
 
-* Django >= 1.4
+* Django >= 1.8
 * PostgreSQL (see notes)
 
 **Notes:**
