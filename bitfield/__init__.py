@@ -4,12 +4,32 @@ django-bitfield
 """
 from __future__ import absolute_import
 
-from bitfield.models import Bit, BitHandler, CompositeBitField, BitField  # NOQA
+try:
+    from bitfield.models import Bit, BitHandler, CompositeBitField, BitField  # NOQA
+except ImportError:
+    pass
+
+
+__version_info__ = {
+    'major': 1,
+    'minor': 9,
+    'micro': 4,
+    'releaselevel': 'final',
+    'serial': 1
+}
+
+
+def get_version(short=False):
+    assert __version_info__['releaselevel'] in ('alpha', 'beta', 'final')
+    vers = ["%(major)i.%(minor)i" % __version_info__, ]
+    if __version_info__['micro']:
+        vers.append(".%(micro)i" % __version_info__)
+    if __version_info__['releaselevel'] != 'final' and not short:
+        vers.append('%s%i' % (
+            __version_info__['releaselevel'][0], __version_info__['serial']))
+    return ''.join(vers)
+
+__version__ = get_version()
+VERSION = __version__
 
 default_app_config = 'bitfield.apps.BitFieldAppConfig'
-
-try:
-    VERSION = __import__('pkg_resources') \
-        .get_distribution('bitfield').version
-except Exception:
-    VERSION = 'unknown'

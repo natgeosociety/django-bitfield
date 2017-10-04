@@ -1,10 +1,24 @@
 #!/usr/bin/env python
-
+import os
+import sys
 from setuptools import setup, find_packages
 
+version = __import__('bitfield').get_version()
+
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py bdist_wheel upload -r natgeo')
+    print("You probably want to also tag the version now:")
+    print("  python setup.py tag")
+    sys.exit()
+elif sys.argv[-1] == 'tag':
+    cmd = "git tag -a %s -m 'version %s';git push --tags" % (version, version)
+    os.system(cmd)
+    sys.exit()
+
+
 setup(
-    name='django-bitfield',
-    version='1.9.3',
+    name='django-bitfield-ng',
+    version=version.replace(' ', '-'),
     author='Disqus',
     author_email='opensource@disqus.com',
     url='https://github.com/disqus/django-bitfield',
@@ -12,7 +26,6 @@ setup(
     packages=find_packages(),
     zip_safe=False,
     install_requires=[
-        'Django>=1.4.22',
         'six',
     ],
     extras_require={
