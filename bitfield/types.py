@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 
 from six import string_types
 
@@ -200,7 +200,7 @@ class BitHandler(object):
         self.set_bit(self._keys.index(key), value)
 
     def __iter__(self):
-        return self.iteritems()
+        return iter(list(self.items()))
 
     def __sentry__(self):
         return repr(self)
@@ -231,7 +231,7 @@ class BitHandler(object):
         return iter(self._keys)
 
     def items(self):
-        return list(self.iteritems())
+        return list(self.items())
 
     def iteritems(self):
         for k in self._keys:

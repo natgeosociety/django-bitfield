@@ -2,7 +2,7 @@
 django-bitfield
 ~~~~~~~~~~~~~~~
 """
-from __future__ import absolute_import
+
 
 try:
     from bitfield.models import Bit, BitHandler, CompositeBitField, BitField  # NOQA
