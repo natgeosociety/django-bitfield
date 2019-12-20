@@ -5,7 +5,7 @@ from django.forms import CheckboxSelectMultiple, IntegerField, ValidationError
 try:
     from django.utils.encoding import force_text
 except ImportError:
-    from django.utils.encoding import force_unicode as force_text
+    from django.utils.encoding import force_text as force_text
 
 from bitfield.types import BitHandler
 
