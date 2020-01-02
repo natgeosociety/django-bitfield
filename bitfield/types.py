@@ -200,7 +200,7 @@ class BitHandler(object):
         self.set_bit(self._keys.index(key), value)
 
     def __iter__(self):
-        return iter(list(self.items()))
+        return self.iteritems()
 
     def __sentry__(self):
         return repr(self)
@@ -231,7 +231,7 @@ class BitHandler(object):
         return iter(self._keys)
 
     def items(self):
-        return list(self.items())
+        return list(self.iteritems())
 
     def iteritems(self):
         for k in self._keys:
