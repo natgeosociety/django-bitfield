@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 
 import six
 
@@ -45,13 +45,13 @@ class BitFieldFlags(object):
             yield Bit(self._flags.index(flag))
 
     def items(self):
-        return list(self.iteritems())
+        return list(self.items())
 
     def keys(self):
-        return list(self.iterkeys())
+        return list(self.keys())
 
     def values(self):
-        return list(self.itervalues())
+        return list(self.values())
 
 
 class BitFieldCreator(object):
@@ -87,7 +87,7 @@ class BitField(BigIntegerField):
     def __init__(self, flags, default=None, *args, **kwargs):
         if isinstance(flags, dict):
             # Get only integer keys in correct range
-            valid_keys = (k for k in flags.keys() if isinstance(k, int) and (0 <= k < MAX_FLAG_COUNT))
+            valid_keys = (k for k in list(flags.keys()) if isinstance(k, int) and (0 <= k < MAX_FLAG_COUNT))
             if not valid_keys:
                 raise ValueError('Wrong keys or empty dictionary')
             # Fill list with values from dict or with empty values

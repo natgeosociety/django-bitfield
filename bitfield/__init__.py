@@ -2,7 +2,7 @@
 django-bitfield
 ~~~~~~~~~~~~~~~
 """
-from __future__ import absolute_import
+
 
 try:
     from bitfield.models import Bit, BitHandler, CompositeBitField, BitField  # NOQA
@@ -11,9 +11,9 @@ except ImportError:
 
 
 __version_info__ = {
-    'major': 1,
-    'minor': 9,
-    'micro': 4,
+    'major': 2,
+    'minor': 0,
+    'micro': 0,
     'releaselevel': 'final',
     'serial': 1
 }
